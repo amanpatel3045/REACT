@@ -11,7 +11,7 @@ console.log(1);
 //useaeaffect wala print hoga 
 useEffect(()=>{
   console.log('Hello');
-});
+},[]);
 console.log(2);
   return (
     <div className="App">
