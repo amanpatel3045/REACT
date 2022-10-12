@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Throw Dice</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://upload.wikimedia.org/wikipedia/commons/8/8c/BBUK_Golden_Dice.png"
+    />
+    
+    <style>
+        body{
+            font-size: 50px;
+            background-color: seashell;
+        }
+        #winner{
+            padding: 30px;
+            height: 60px;
+            text-align: center;
+           
+        }
+        #member-1 , #member-2, #member-3{
+            /* height: 80px;
+            width: 80px; */
+            padding: 15px 30px;
+            margin: 20px;
+            background-color: rgba(184, 133, 39, 0.568);
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+            border-radius: 10px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+            display: none;
+ 
+        }
+        #roll{
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid grey;
+            background-color: teal;
+            color: white;
+            cursor: pointer;
+            font-size: 30px;
+            margin-top: 10px;
+            margin-left: 40%;
+            
+        }
+        #roll:hover{
+            background-color: green;
+        }
+      
+        .dices{
+            display: flex;
+            justify-content: space-around;
+        }
+        .dices>div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        img{
+            margin-left: 44%;
+        }
+        span img{
+            width: 90px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <img src="" alt=""><div id="winner">WINNER</div><img src="" alt="">
+
+    <section class="dices">
+     <div>Sukhdev : <div id="member-1"></div><span id="sp1"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/BBUK_Golden_Dice.png" alt=""></span> </div>
+     <div>Akash :<div id="member-2"></div><span id="sp2"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/BBUK_Golden_Dice.png" alt=""></span></div>
+     <div>Ayush :<div id="member-3"></div><span id="sp3"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/BBUK_Golden_Dice.png" alt=""></span></div>
+    </section>
+    <img src="https://www.readermaster.com/wp-content/uploads/2018/11/click-here.gif" id="indicator"><br>
+
+    <button id="roll">ROLL THE DICE</button>
+    
+</body>
+<script>
+    var roll=document.getElementById("roll");
+    roll.setAttribute("onclick","findRandom()");
+
+    function findRandom(){
+
+        var member1= Math.floor(Math.random()*1000)%6 +1;
+        var member2= Math.floor(Math.random()*1000)%6 +1;
+        var member3= Math.floor(Math.random()*1000)%6 +1;
+        // console.log(member1,member2,member3);
+        var mem1= document.getElementById("member-1");
+        var mem2= document.getElementById("member-2");
+        var mem3= document.getElementById("member-3");
+        mem1.style.display="block";
+        mem2.style.display="block";
+        mem3.style.display="block";
+        document.querySelector("#sp1").style.display="none";
+        document.querySelector("#sp2").style.display="none";
+        document.querySelector("#sp3").style.display="none";
+        document.querySelector("#indicator").style.display="none";
+        
+
+        var winner=document.getElementById("winner");
+
+        roll.style.display="none";
+
+
+        
+
+        if(member1==member2 && member2==member3 && member1==member3 ){
+           mem1.style.backgroundColor="blue";
+           mem2.style.backgroundColor="blue";
+           mem3.style.backgroundColor="blue";
+           mem1.innerText=member1;
+           mem2.innerText=member1;
+           mem3.innerText=member1;
+           winner.innerText="Draw";
+           winner.style.color="red";
+            
+        }else if(member1==member2){
+            mem1.style.backgroundColor="blue";
+           mem2.style.backgroundColor="blue";
+           mem1.innerText=member1;
+           mem2.innerText=member1;
+           mem3.innerText=member3;
+           if(member1<member3){
+            mem3.style.backgroundColor="green";
+            winner.innerText="Ayush";
+            winner.style.color="green";
+           }else{
+            mem3.style.backgroundColor="red";
+            winner.innerText="Draw";
+            winner.style.color="red";
+           }
+        }else if(member2==member3){
+            mem2.style.backgroundColor="blue";
+           mem3.style.backgroundColor="blue";
+           mem2.innerText=member2;
+           mem3.innerText=member2;
+           mem1.innerText=member1;
+           if(member2<member1){
+            mem1.style.backgroundColor="green";
+            winner.innerText="Sukhdev";
+            winner.style.color="green";
+           }else{
+            mem1.style.backgroundColor="red";
+            winner.innerText="Draw";
+            winner.style.color="red";
+           }
+        }else if(member1==member3){
+            mem1.style.backgroundColor="blue";
+           mem3.style.backgroundColor="blue";
+           mem1.innerText=member1;
+           mem3.innerText=member1;
+           mem2.innerText=member2;
+           if(member1<member2){
+            mem2.style.backgroundColor="green";
+            winner.innerText="Akash";
+            winner.style.color="green";
+           }else{
+            mem2.style.backgroundColor="red";
+            winner.innerText="Draw";
+            winner.style.color="red";
+           }
+        }else if(member1<member2 && member2<member3){
+            mem1.style.backgroundColor="red";
+           mem2.style.backgroundColor="yellow";
+           mem3.style.backgroundColor="green";
+           mem1.innerText=member1;
+           mem2.innerText=member2;
+           mem3.innerText=member3;
+           winner.innerText="Ayush";
+           winner.style.color="green";
+
+        }else if(member1<member3 && member3<member2){
+           mem1.style.backgroundColor="red";
+           mem2.style.backgroundColor="green";
+           mem3.style.backgroundColor="yellow";
+           mem1.innerText=member1;
+           mem2.innerText=member2;
+           mem3.innerText=member3;
+           winner.innerText="Akash";
+           winner.style.color="green";
+            
+        }else if(member2<member1 && member1<member3){
+            mem2.style.backgroundColor="red";
+           mem1.style.backgroundColor="yellow";
+           mem3.style.backgroundColor="green";
+           mem1.innerText=member1;
+           mem2.innerText=member2;
+           mem3.innerText=member3;
+           winner.innerText="Ayush";
+           winner.style.color="green";
+            
+        }else if(member2<member3 && member3<member1){
+            mem2.style.backgroundColor="red";
+           mem1.style.backgroundColor="green";
+           mem3.style.backgroundColor="yellow";
+           mem1.innerText=member1;
+           mem2.innerText=member2;
+           mem3.innerText=member3;
+           winner.innerText="Sukhdev";
+           winner.style.color="green";
+            
+        }else if(member3<member2 && member2<member1){
+            mem3.style.backgroundColor="red";
+           mem1.style.backgroundColor="green";
+           mem2.style.backgroundColor="yellow";
+           mem1.innerText=member1;
+           mem2.innerText=member2;
+           mem3.innerText=member3;
+           winner.innerText="Sukhdev";
+           winner.style.color="green";
+            
+        }else if(member3<member1 && member1<member2){
+            mem3.style.backgroundColor="red";
+           mem2.style.backgroundColor="green";
+           mem1.style.backgroundColor="yellow";
+           mem1.innerText=member1;
+           mem2.innerText=member2;
+           mem3.innerText=member3;
+           winner.innerText="Akash"; 
+           winner.style.color="green";
+        }
+
+        setTimeout(function(){
+            roll.style.display="none";
+           location.reload(); 
+        },4000)
+
+    
+ }
+
+    
+
+</script>
+</html>
