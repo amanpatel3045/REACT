@@ -1,0 +1,1 @@
+# JavaScript follows Imperative Approach
