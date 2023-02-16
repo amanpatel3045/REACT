@@ -1,0 +1,38 @@
+[
+  {
+    "id":1,
+"name":"Aman",
+"class":"MCA",
+"subject":"Computer Architecture"
+  },
+  {
+    "id":2,
+    "name":"Akash",
+    "class":"BCA",
+    "subject":"Computer Network"
+  },
+  {
+    "id":3,
+    "name":"Anant",
+    "class":"B.Tech",
+    "subject":"Computer Fundamental"
+  },
+  {
+    "id":4,
+    "name":"Ayush",
+    "class":"BCS",
+    "subject":"RDBMS"
+  },
+  {
+    "id":5,
+    "name":"Amey",
+    "class":"MBA",
+    "subject":"Business Communication"
+  },
+  {
+    "id":6,
+    "name":"Amit",
+    "class":"MS",
+    "subject":"Cardiology"
+  }
+]
