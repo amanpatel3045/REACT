@@ -1,0 +1,8 @@
+/* FOR NAVBAR */
+.top {
+  width: 100%;
+  height: 50px;
+  background-color: aqua;
+  position: sticky;
+  top: 0;
+}
